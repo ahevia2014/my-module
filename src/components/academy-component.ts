@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
+import{AcademyProvider} from '../providers/academy-provider'
  
 const HTML_TEMPLATE = `
 <ion-header>
@@ -34,7 +35,10 @@ const CSS_STYLE = `
   styles: [CSS_STYLE]
 })
 export class AcademyComponent {
-  constructor(private navCtrl: NavController) {}
+  constructor(private navCtrl: NavController,private _ap:AcademyProvider) {
+
+//_ap.Test();
+  }
  
   leavePage() {
       this.navCtrl.pop();
