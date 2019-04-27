@@ -1,11 +1,11 @@
 import { AlertController, LoadingController } from 'ionic-angular';
 import { Geolocation } from "@ionic-native/geolocation";
 export declare class AcademyProvider {
-    geolocation: typeof Geolocation;
-    loadingCtrl: typeof LoadingController;
-    alertCtrl: typeof AlertController;
+    private geolocation;
+    private loadingCtrl;
+    private alertCtrl;
     config: string;
-    constructor();
+    constructor(geolocation: Geolocation, loadingCtrl: LoadingController, alertCtrl: AlertController);
     drawPolyline(path: any, color: any, google: any, map: any): any;
     CenterControl(controlDiv: any, map: any, google: any): void;
     createCenter(map: any, google: any): void;

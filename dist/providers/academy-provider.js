@@ -67,15 +67,17 @@ var tarifas = [
 ];
 console.log("grifos=", grifos);
 var currTemplate = this;
+/*
 var loading;
 var geolocation;
-var loadingCtrl;
-var alertCtrl;
+ var loadingCtrl;
+  var alertCtrl;
+  */
 var AcademyProvider = /** @class */ (function () {
-    function AcademyProvider() {
-        this.geolocation = Geolocation;
-        this.loadingCtrl = LoadingController;
-        this.alertCtrl = AlertController;
+    function AcademyProvider(geolocation, loadingCtrl, alertCtrl) {
+        this.geolocation = geolocation;
+        this.loadingCtrl = loadingCtrl;
+        this.alertCtrl = alertCtrl;
         console.log('Hello AcademyProvider Provider');
     }
     AcademyProvider.prototype.drawPolyline = function (path, color, google, map) {
@@ -595,7 +597,8 @@ var AcademyProvider = /** @class */ (function () {
         markers2 = [];
     };
     AcademyProvider.prototype.getCurrentPosition = function (google, map) {
-        loading = loadingCtrl.create({
+        var _this = this;
+        var loading = this.loadingCtrl.create({
             content: "Buscando Ubicación ..."
         });
         loading.present().then(function () {
@@ -604,7 +607,7 @@ var AcademyProvider = /** @class */ (function () {
                 enableHighAccuracy: true,
                 maximumAge: Infinity
             };
-            geolocation.getCurrentPosition(locationOptions).then(function (position) {
+            _this.geolocation.getCurrentPosition(locationOptions).then(function (position) {
                 loading.dismiss()
                     .then(function () {
                     //showToast("Donde estoy!",5000);
@@ -646,7 +649,11 @@ var AcademyProvider = /** @class */ (function () {
           return AcademyProvider.prototype.config;
         }*/
     /** @nocollapse */
-    AcademyProvider.ctorParameters = function () { return []; };
+    AcademyProvider.ctorParameters = function () { return [
+        { type: Geolocation, },
+        { type: LoadingController, },
+        { type: AlertController, },
+    ]; };
     return AcademyProvider;
 }());
 export { AcademyProvider };

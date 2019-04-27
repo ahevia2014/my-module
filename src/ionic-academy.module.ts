@@ -2,7 +2,7 @@ import { NgModule, ModuleWithProviders } from '@angular/core';
 import { AcademyComponent } from './components/academy-component';
 import { AcademyProvider } from './providers/academy-provider';
 import { IonicModule } from 'ionic-angular';
- 
+import { Geolocation } from "@ionic-native/geolocation";
 @NgModule({
     imports: [
         // Only if you use elements like ion-content, ion-xyz...
@@ -21,7 +21,7 @@ export class IonicAcademyModule {
     static forRoot(): ModuleWithProviders {
         return {
             ngModule: IonicAcademyModule,
-            providers: [AcademyProvider]
+            providers: [AcademyProvider,Geolocation]
         };
     }
 }

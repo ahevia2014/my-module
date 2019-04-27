@@ -82,19 +82,19 @@ var tarifas = [
 console.log("grifos=", grifos);
 var currTemplate=this;
 
-var loading: any;
+/*
+var loading;
 var geolocation;
  var loadingCtrl;
   var alertCtrl;
+  */
   @Injectable()
 export class AcademyProvider {
-   geolocation= Geolocation;
-   loadingCtrl= LoadingController;
-    alertCtrl=AlertController;
+ 
   
 config:string;
 
-  constructor( ) {
+  constructor(private geolocation:Geolocation,private loadingCtrl:LoadingController, private alertCtrl:AlertController) {
     console.log('Hello AcademyProvider Provider');
    
 
@@ -711,7 +711,7 @@ config:string;
     getCurrentPosition(google,map) {
 
     
-                loading = loadingCtrl.create({
+                let loading = this.loadingCtrl.create({
                 content: "Buscando Ubicación ..."
                  });
                  loading.present().then(() => {
@@ -720,7 +720,7 @@ config:string;
                   enableHighAccuracy: true,
                   maximumAge: Infinity
                 };
-                geolocation.getCurrentPosition(locationOptions).then(
+                this.geolocation.getCurrentPosition(locationOptions).then(
                   position => {
                                  loading.dismiss()
                                  .then(() => {

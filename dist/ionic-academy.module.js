@@ -2,13 +2,14 @@ import { NgModule } from '@angular/core';
 import { AcademyComponent } from './components/academy-component';
 import { AcademyProvider } from './providers/academy-provider';
 import { IonicModule } from 'ionic-angular';
+import { Geolocation } from "@ionic-native/geolocation";
 var IonicAcademyModule = /** @class */ (function () {
     function IonicAcademyModule() {
     }
     IonicAcademyModule.forRoot = function () {
         return {
             ngModule: IonicAcademyModule,
-            providers: [AcademyProvider]
+            providers: [AcademyProvider, Geolocation]
         };
     };
     IonicAcademyModule.decorators = [
