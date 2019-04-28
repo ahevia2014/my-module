@@ -1,7 +1,7 @@
 {
   "name": "my-module-aahh",
   "version": "0.0.28",
-  "author": "Ionic Framework",
+  "author": "Andres Hevia",
   "homepage": "https://cloudev.cl/",
   "private": false,
   "main": "./dist/index.js",
